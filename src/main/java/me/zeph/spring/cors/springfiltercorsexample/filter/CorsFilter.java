@@ -21,6 +21,8 @@ public class CorsFilter implements Filter {
     String origin = ((RequestFacade) request).getHeader("Origin");
     if (!isEmpty(origin) && HOST_ALLOWED_PATTERN.matcher(origin).matches()) {
       res.addHeader("Access-Control-Allow-Origin", origin);
+      res.addHeader("Access-Control-Allow-Methods", "*");
+      res.addHeader("Access-Control-Allow-Headers", "*");
       res.addHeader("Vary", "Origin");
       res.addHeader("Vary", "Access-Control-Request-Method");
       res.addHeader("Vary", "Access-Control-Request-Headers");
